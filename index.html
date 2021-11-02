@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Selections example</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <style> 
+            .col-3 {
+                padding: 20px;
+                background-color: salmon;
+                border: 2px solid black;
+            }
+            
+            input {
+                margin:10px;
+            }
+           
+
+            .box {
+                position:absolute;
+                top:60px;
+                left:200px;
+                width:100px;
+                height:50px;
+                padding: 20px;
+                border:5px solid #777788;
+                background-color:transparent;
+            }
+
+
+            .highlighted {
+                border:5px solid #0c0fc0;
+            }
+            .overall-img
+            {
+                position:relative;
+                margin:20px;
+                width: 650px;
+                height:258px;
+                border:1px solid black;
+            }
+            img
+            {
+                position:relative;
+                margin:20px;
+                width: 650px;
+                height:258px;
+                border:1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <img class="overall-img" src="./images/AHU-nonsquared.jpg" />
+            <div class="box"> </div>
+       </div>
+       <div id='heatmap'></div>
+    </body>
+    <script>
+        ;
+      
+
+        d3.selectAll('.box')
+        .on('mouseover',function(d,i) {
+            d3.select(this).classed('highlighted',true)
+        })
+        .on('mouseout', function(d,i) {
+            d3.select(this).classed('highlighted',false);
+        })
+        .on('click', function(d,i) {
+            var img = document.createElement("img");
+            img.src = "./images/Heatmap_HCLS1.png";
+            var src = document.getElementById("heatmap");
+            src.appendChild(img)
+        });
+    </script>
+</html>
